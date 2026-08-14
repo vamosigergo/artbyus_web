@@ -260,7 +260,7 @@ body.is-ready .preloader__mark {
   position: relative; 
   margin: 0 !important;
   font-weight: 400;
-  font-size: 3.3vw; /* Arányos méret */
+  font-size: 3.58vw; /* Arányos méret */
   line-height: 1.05;
   letter-spacing: -.035em;
   white-space: nowrap; /* Tilos a sortörés! */
@@ -301,7 +301,7 @@ body.is-ready .preloader__mark {
 .about {
   min-height: 491px;
   padding-top: 27px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .about .section-label {
@@ -895,40 +895,341 @@ body.is-ready .preloader__mark {
 }
 
 /* =========================================================
-   MOBIL NÉZET (CONTACT)
+   MOBIL NÉZET (MINDEN 800PX ALATTI KÉPERNYŐRE)
 ========================================================= */
 @media (max-width: 799px) {
-    .contact {
-        padding-top: 19px;
-        min-height: auto;
-    }
-    .contact__label {
-        top: 22px;
-        left: 20px;
-    }
-    .contact__title {
-        width: calc(100% - 116px);
-        margin-left: var(--copy-start);
-        margin-top: 60px;
-        margin-bottom: 40px;
-        font-size: 18px;
-    }
-    .asset--contact {
-        position: relative;
-        top: auto;
-        left: auto;
-        margin: 0 20px 40px 20px;
-        width: calc(100% - 40px);
-        height: auto;
-        aspect-ratio: 1/1; /* Megtartja négyzetnek! */
-    }
-    .contact-form,
-    .submit-btn,
-    .form-status {
-        width: calc(100% - 116px);
-        margin-left: var(--copy-start);
-    }
-    .submit-btn {
-        justify-content: flex-start; /* Mobilon balra húzzuk a gombot */
-    }
+  /* Alapok és térközök nullázása mobilon */
+  :root {
+    --page-pad: 20px;
+    --copy-start: 20px; /* Megszüntetjük a hatalmas bal margót! */
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  /* --- HERO (FŐKÉP) ÉS FEJLÉC --- */
+  /* --- HERO (FŐKÉP) ÉS FEJLÉC --- */
+  .hero {
+    height: 100vh;
+    min-height: auto;
+  }
+
+  .site-header {
+    padding: 30px 20px 0;
+    flex-direction: row; /* EGYMÁS MELLETT! Ez teszi egy sorba őket */
+    align-items: center; /* Függőlegesen középre igazítja a logót és a menüt */
+    justify-content: space-between; /* A logót balra, a menüt jobbra tolja */
+    gap: 15px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand__mark {
+    width: 100px; /* Kicsit kisebbre vettük, hogy maradjon hely a menünek */
+    height: auto;
+    margin-left: 0;
+  }
+
+  .main-nav {
+    margin-right: 0;
+    gap: 12px; /* Kicsit szorosabb, hogy kiférjen */
+    font-size: 11px; /* Kisebb betű, hogy egy sorban maradjon mobilon is */
+    width: auto; /* Levettük a 100%-ot, így befér a logó mellé */
+    justify-content: flex-end;
+    flex-wrap: nowrap; /* Megtiltjuk, hogy új sorba törjön */
+  }
+
+  /* --- FŐKÉP SZÖVEGEI MOBILON --- */
+  .hero__statement {
+    top: 130px; 
+    bottom: auto; 
+    left: 20px; /* Szigorúan a bal szélhez igazítva (20px margóval) */
+    right: 20px;
+    width: auto;
+    transform: none;
+    align-items: flex-start; /* Szigorúan balra zárja a dobozokat */
+    gap: 15px; 
+  }
+
+  .hero__statement h1,
+  .hero__statement p {
+    font-size: 4.6vw; 
+    line-height: 1.15;
+    letter-spacing: -.03em;
+    white-space: nowrap; 
+    align-self: flex-start; /* Szigorúan balra zárva */
+    text-align: left; /* A belső szöveg is balra zárt */
+  }
+
+  .hero__statement p {
+    margin-left: 0 !important; /* Semmilyen behúzás nem lesz mobilon */
+  }
+  
+  /* --- ÁLTALÁNOS SZEKCIÓ BEÁLLÍTÁSOK --- */
+  .section-label,
+  .about .section-label {
+    position: relative !important; /* Levesszük a lebegést (absolute) */
+    top: auto !important;
+    left: auto !important;
+    margin-left: 0;
+    margin-bottom: 25px; /* Szép szellős térköz a cím és a szöveg közé */
+  }
+
+  .copy-column {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* --- RÓLUNK SZEKCIÓ --- */
+  .about {
+    min-height: auto;
+    padding: 60px 20px;
+    margin-top: 0;
+  }
+  .about__copy {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .about__copy p + p {
+    margin-top: 20px;
+  }
+  .location--about {
+    display: none; /* Mobilon elrejtjük a zavaró jobb felső helyszínt */
+  }
+
+  /* --- SZAKÉRTELEM SZEKCIÓ --- */
+  .expertise {
+    min-height: auto;
+    padding: 20px 20px 60px;
+  }
+  .expertise__title {
+    position: static;
+    margin: 0 0 20px 0;
+    font-size: 32px;
+    line-height: 1.1;
+  }
+  .expertise__copy {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  /* =========================================================
+   MUNKÁINK – MOBIL LAPOZÓS GALÉRIA
+========================================================= */
+
+.portfolio {
+  position: relative !important;
+  min-height: auto;
+
+  padding: 40px 0 80px 0 !important;
+
+  overflow: hidden;
+}
+
+.portfolio__label {
+  position: relative !important;
+
+  top: auto !important;
+  left: auto !important;
+
+  margin: 0 20px 25px 20px !important;
+}
+
+
+/* =========================================================
+   VÍZSZINTES GALÉRIA
+========================================================= */
+
+.portfolio__grid {
+  position: relative !important;
+
+  display: flex !important;
+  flex-wrap: nowrap !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  gap: 15px !important;
+
+  padding: 0 20px 15px 20px !important;
+  margin: 0 !important;
+
+  /* Csak vízszintes görgetés */
+  touch-action: pan-x;
+
+  /* Lapozás */
+  scroll-snap-type: x mandatory;
+
+  -webkit-overflow-scrolling: touch;
+
+  /* Scrollbar elrejtése */
+  scrollbar-width: none;
+}
+
+.portfolio__grid::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   GALÉRIA KÉPEI
+========================================================= */
+
+.project {
+  position: relative !important;
+
+  flex: 0 0 calc(100vw - 70px) !important;
+
+  width: calc(100vw - 70px) !important;
+  height: auto !important;
+
+  aspect-ratio: 4 / 5 !important;
+
+  margin: 0 !important;
+
+  top: auto !important;
+  left: auto !important;
+
+  object-fit: cover !important;
+
+  scroll-snap-align: start !important;
+  scroll-snap-stop: always;
+}
+
+
+/* Minden projekt látható mobilon */
+
+.project--1,
+.project--2,
+.project--3,
+.project--4,
+.project--5,
+.project--6,
+.project--7 {
+  display: block !important;
+}
+
+
+/* =========================================================
+   LEÍRÁS – A GALÉRIA ALATT
+========================================================= */
+
+.portfolio__notice {
+  position: relative !important;
+
+  display: block !important;
+
+  width: auto !important;
+  max-width: 320px !important;
+
+  margin: 30px 20px 0 20px !important;
+
+  padding: 0 !important;
+
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+
+  text-align: left !important;
+
+  white-space: normal !important;
+
+  /* NEM része a slidernek */
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+}
+
+.portfolio__notice {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+  
+  /* --- CONTACT SZEKCIÓ --- */
+  .contact {
+    min-height: auto;
+    padding: 60px 20px;
+  }
+  .contact__label {
+    margin-bottom: 30px;
+  }
+  .contact__title {
+    width: 100%;
+    margin: 0 0 40px 0;
+    font-size: 26px;
+  }
+  .asset--contact {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    margin: 0 0 40px 0;
+  }
+  .contact-form,
+  .submit-btn,
+  .form-status {
+    width: 100%;
+    margin-left: 0;
+  }
+  .submit-btn {
+    margin-top: 30px;
+    justify-content: flex-start;
+  }
+
+  /* --- LÁBLÉC --- */
+  .site-footer {
+    min-height: auto;
+    padding: 40px 20px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .site-footer__line {
+    width: 100%;
+    margin: 0;
+  }
+  .footer-nav {
+    margin-top: 0;
+    align-items: center;
+  }
+  .footer-email,
+  .location--footer {
+    position: static; /* Középre rendezve mindent */
+    transform: none;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+/* =========================================================
+   EXTRA KIS KÉPERNYŐK (Pl. iPhone SE) ÉS MOZGÁS KONTROLL
+========================================================= */
+@media (max-width: 360px) {
+  .hero__statement h1,
+  .hero__statement p { 
+    font-size: 22px; 
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .main-nav a,
+  .footer-nav a,
+  .contact-form button i { animation: none; transition: none; }
 }
