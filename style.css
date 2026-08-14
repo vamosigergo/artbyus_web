@@ -207,48 +207,73 @@ body.is-ready .preloader__mark {
   color: #9e9e9e;
 }
 
+/* =========================================================
+   FŐKÉP SZÖVEGEI (HERO STATEMENT)
+========================================================= */
+
+/* =========================================================
+   FŐKÉP SZÖVEGEI (HERO STATEMENT) - KÖZÉPRE ZÁRT, LÉPCSŐZETES
+========================================================= */
+
+/* =========================================================
+   FŐKÉP SZÖVEGEI (HERO STATEMENT) - OKOS, RESZPONZÍV ELRENDEZÉS
+========================================================= */
+
+/* =========================================================
+   FŐKÉP SZÖVEGEI (HERO STATEMENT) - GOLYÓÁLLÓ ELRENDEZÉS
+========================================================= */
+
+/* =========================================================
+   FŐKÉP SZÖVEGEI (HERO STATEMENT) - KÖZÉPRE IGAZÍTOTT DOBOZ
+========================================================= */
+
 .hero__statement {
   position: absolute;
   z-index: 1;
-  inset: 0;
+  
+  /* 1. LEJJEBB VIVÉS: Itt tudod szabályozni, mennyire legyen lent (pl. 70%, 75%) */
+  top: 77%; 
+  
+  /* 2. KÖZÉPRE IGAZÍTÁS: A bal szélét a képernyő közepére toljuk... */
+  left: 50%; 
+  
+  /* ...majd a saját szélességének felével visszahúzzuk balra. Ez a tökéletes középre zárás titka! */
+  transform: translate(-50%, -50%); 
+  
   pointer-events: none;
   text-transform: uppercase;
-  transform: translateY(-120px);
-  margin-left: 30px;
-}
-
-.hero__statement p {
-   margin-left: 100px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+  
+  /* Garantálja, hogy a dobozon belül a szövegek balra zártak maradjanak, 
+     így nem esik szét az alsó sor eltolása! */
+  align-items: flex-start;
+  
+  /* A doboz pontosan akkora lesz, mint a benne lévő szöveg */
+  width: max-content; 
 }
 
 .hero__statement h1,
-.expertise__copy {
-  margin: 0 auto !important;
+.hero__statement p {
+  position: relative; 
+  margin: 0 !important;
   font-weight: 400;
-}
-
-.hero__statement h1 {
-  position: absolute;
-  top: 592px;
-  left: 21px;
-  font-size: 56px;
-  line-height: 1.02;
+  font-size: 3.3vw; /* Arányos méret */
+  line-height: 1.05;
   letter-spacing: -.035em;
+  white-space: nowrap; /* Tilos a sortörés! */
 }
 
 .hero__statement p {
-  position: absolute;
-  top: 704px;
-  left: 34.47vw;
-  font-size: 56px;
-  line-height: 1.02;
-  letter-spacing: -.035em;
+  margin-left: 9.6em !important; /* A lépcsőzetes eltolás marad */
 }
 
 .dot {
   display: inline-block;
-  width: .9em;
-  height: .9em;
+  width: .8em;
+  height: .8em;
   margin-left: .1em;
   border-radius: 50%;
   background: currentColor;
@@ -276,6 +301,7 @@ body.is-ready .preloader__mark {
 .about {
   min-height: 491px;
   padding-top: 27px;
+  margin-top: 30px;
 }
 
 .about .section-label {
@@ -458,13 +484,15 @@ body.is-ready .preloader__mark {
 .site-footer {
   position: relative;
   min-height: 187px;
-  padding: 0 23px;
-  margin-left: 30px;
+  padding: 0 23px
 }
 
 .site-footer__line {
-  height: 1px;
+  height: 2px;
   background: #929292;
+  margin: 0 auto;
+  width: 100%
+  
 }
 
 .footer-nav {
