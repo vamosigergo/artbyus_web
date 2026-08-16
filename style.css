@@ -70,8 +70,8 @@ body.is-ready .preloader {
 ========================================================= */
 
 .preloader__mark {
-  width: 180px; 
-  min-height: 50px; 
+  width: 360px; 
+  min-height: 100px; 
   opacity: 0; 
   
   /* Ez a CSS Maszk hozza létre a finom, "kirajzolódó" hatást 
