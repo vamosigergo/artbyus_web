@@ -942,31 +942,51 @@ body.is-ready .preloader__mark {
     flex-wrap: nowrap; /* Megtiltjuk, hogy új sorba törjön */
   }
 
-  /* --- FŐKÉP SZÖVEGEI MOBILON --- */
-  .hero__statement {
-    top: 130px; 
-    bottom: auto; 
-    left: 20px; /* Szigorúan a bal szélhez igazítva (20px margóval) */
-    right: 20px;
-    width: auto;
-    transform: none;
-    align-items: flex-start; /* Szigorúan balra zárja a dobozokat */
-    gap: 15px; 
+  @media (max-width: 799px) {
+  
+  /* ... (a korábbi kódok, pl. header beállítások maradnak) ... */
+
+  /* 1. LÉPÉS: ITT ÁLLÍTOD BE A KÉP MAGASSÁGÁT */
+  .hero {
+    height: 70vh; /* Ezt az értéket csökkentsd (pl. 60vh vagy akár fix 500px), amíg olyan nem lesz, ahogy szeretnéd! */
+    min-height: auto;
   }
 
+  /* 2. LÉPÉS: A SZÖVEGET ALULRÓL POZÍCIONÁLJUK */
+  .hero__statement {
+    position: absolute;
+    z-index: 10;
+    
+    /* A top és transform értékeket felülírjuk: */
+    top: auto; 
+    transform: none; 
+    
+    /* Helyette a doboz aljához rögzítjük: */
+    bottom: 10%; /* Mindig a hero szekció aljától számított 10%-ra lesz. Ha lejjebb akarod, írj 5%-ot, ha feljebb, 15%-ot. */
+    
+    left: 5vw;
+    width: 90vw;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh; 
+    margin: 0;
+  }
+
+  /* A belső elemek maradnak az előző javítás szerint: */
   .hero__statement h1,
   .hero__statement p {
-    font-size: 4.6vw; 
-    line-height: 1.15;
+    position: static;
+    top: auto;
+    font-size: 5vw; 
+    line-height: 1.25;
     letter-spacing: -.03em;
-    white-space: nowrap; 
-    align-self: flex-start; /* Szigorúan balra zárva */
-    text-align: left; /* A belső szöveg is balra zárt */
+    white-space: normal; 
+    align-self: flex-start; 
+    text-align: left; 
+    margin: 0 !important;
   }
-
-  .hero__statement p {
-    margin-left: 0 !important; /* Semmilyen behúzás nem lesz mobilon */
-  }
+}
   
   /* --- ÁLTALÁNOS SZEKCIÓ BEÁLLÍTÁSOK --- */
   .section-label,
@@ -1059,7 +1079,7 @@ body.is-ready .preloader__mark {
   gap: 15px !important;
 
   padding: 0 20px 15px 20px !important;
-  margin: 0 !important;
+  margin: 0 20px 25px 20px !important;
 
   /* Csak vízszintes görgetés */
   touch-action: pan-x;
