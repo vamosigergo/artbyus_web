@@ -103,7 +103,19 @@
         alt="Kapcsolati kép"
     >
 
-    <form class="contact-form" id="contact-form" novalidate>
+    <form class="contact-form" id="contact-form" novalidate action="https://api.web3forms.com/submit" method="post">
+
+      <input
+        type="hidden"
+        name="access_key"
+        value="e9fefd36-470e-434b-83be-b85af649d451"
+    >
+
+    <input
+        type="hidden"
+        name="subject"
+        value="Új üzenet a weboldalról"
+    >
 
         <div class="form-inputs">
 
@@ -134,7 +146,7 @@
             <div class="form-group question">
                 <textarea
                     id="question"
-                    name="question"
+                    name="message"
                     rows="1"
                     required
                     placeholder=" "
