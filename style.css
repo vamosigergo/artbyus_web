@@ -1141,41 +1141,54 @@ body.is-ready .preloader__mark {
    LEÍRÁS – A GALÉRIA ALATT
 ========================================================= */
 
-.portfolio__notice {
+/* =========================================================
+   MUNKÁINK LEÍRÁSA – GALÉRIA ALATT
+========================================================= */
+
+.portfolio {
   position: relative !important;
-
-  display: block !important;
-
-  width: auto !important;
-  max-width: 320px !important;
-
-  margin: 30px 20px 0 20px !important;
-
-  padding: 0 !important;
-
-  font-size: 12px !important;
-  line-height: 1.4 !important;
-
-  text-align: left !important;
-
-  white-space: normal !important;
-
-  /* NEM része a slidernek */
-  left: auto !important;
-  right: auto !important;
-  top: auto !important;
-  bottom: auto !important;
+  padding-bottom: 130px !important;
 }
 
+.portfolio__grid {
+  position: relative !important;
+}
+
+/* =========================================================
+   MUNKÁINK – LEÍRÁS A GALÉRIA ALATT
+========================================================= */
+
+.portfolio {
+  position: relative !important;
+  padding-bottom: 110px !important;
+}
+
+/* Az eredeti szöveget elrejtjük,
+   mert az a slider belsejében van */
 .portfolio__notice {
   display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
 }
+
+/* A szöveg már a PORTFOLIO szekció részeként jelenik meg,
+   ezért nem mozog a galériával */
+.portfolio::after {
+  content: "MEGBÍZÓINK OTTHONÁNAK VÉDELMÉBEN A VÉGLEGES MUNKÁT NEM ÁLL MÓDUNKBAN FELTÜNTETNI A WEBOLDALON";
+
+  display: block;
+
+  margin: 35px 20px 0 20px;
+
+  max-width: 320px;
+
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #f4f4f2;
+}
+
+
+
   
   /* --- CONTACT SZEKCIÓ --- */
   .contact {
