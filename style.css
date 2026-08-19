@@ -230,44 +230,40 @@ body.is-ready .preloader__mark {
 .hero__statement {
   position: absolute;
   z-index: 1;
-  
-  /* 1. LEJJEBB VIVÉS: Itt tudod szabályozni, mennyire legyen lent (pl. 70%, 75%) */
-  top: 77%; 
-  
-  /* 2. KÖZÉPRE IGAZÍTÁS: A bal szélét a képernyő közepére toljuk... */
-  left: 50%; 
-  
-  /* ...majd a saját szélességének felével visszahúzzuk balra. Ez a tökéletes középre zárás titka! */
-  transform: translate(-50%, -50%); 
-  
+
+  top: 77%;
+  left: 0;
+  width: 100%;
+
+  transform: translateY(-50%);
+
   pointer-events: none;
   text-transform: uppercase;
-  
-  display: flex;
-  flex-direction: column;
-  gap: 0.5vw;
-  
-  /* Garantálja, hogy a dobozon belül a szövegek balra zártak maradjanak, 
-     így nem esik szét az alsó sor eltolása! */
-  align-items: flex-start;
-  
-  /* A doboz pontosan akkora lesz, mint a benne lévő szöveg */
-  width: max-content; 
+
+  /* KÜLÖN ÁLLÍTHATÓ POZÍCIÓK */
+  --left-position: 2.5vw;
+  --right-position: 2.5vw;
 }
 
 .hero__statement h1,
 .hero__statement p {
-  position: relative; 
+  position: absolute;
   margin: 0 !important;
   font-weight: 400;
-  font-size: 3.58vw; /* Arányos méret */
+  font-size: 3.58vw;
   line-height: 1.05;
   letter-spacing: -.035em;
-  white-space: nowrap; /* Tilos a sortörés! */
+  white-space: nowrap;
 }
 
+/* BAL OLDALI TÖMBB */
+.hero__statement h1 {
+  left: var(--left-position);
+}
+
+/* JOBB OLDALI TÖMBB */
 .hero__statement p {
-  margin-left: 9.6em !important; /* A lépcsőzetes eltolás marad */
+  right: var(--right-position);
 }
 
 .dot {
@@ -516,6 +512,38 @@ body.is-ready .preloader__mark {
   top: 37px;
   right: 19px;
   text-align: right;
+}
+/* Az egész blokkot (linkek + email) középre pozicionáljuk a láblécben */
+.footer-legal {
+  position: absolute;
+  top: 37px;
+  left: 49%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Szép szellős távolság az elemek és a vonalak ( | ) között */
+  
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+/* Visszaállítjuk az e-mail linket normál állapotra, hogy ne ugorjon ki a sorból */
+.footer-email {
+  position: static;
+  transform: none;
+  left: auto;
+  top: auto;
+}
+
+.footer-legal a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.footer-legal a:hover {
+  color: #9e9e9e; /* Az oldal többi linkjéhez passzoló szürkés hover effekt */
 }
 
 @media (max-width: 799px) {
@@ -978,7 +1006,7 @@ body.is-ready .preloader__mark {
   .hero__statement p {
     position: static;
     top: auto;
-    font-size: 5vw; 
+    font-size: 7vw; 
     line-height: 1.25;
     letter-spacing: -.03em;
     white-space: normal; 
@@ -1248,7 +1276,26 @@ body.is-ready .preloader__mark {
     text-align: center;
     margin: 0;
   }
+
+  @media (max-width: 799px) {
+  
+  /* ... (a korábbi mobil szabályaid maradnak) ... */
+
+  .footer-legal {
+    position: static;
+    transform: none;
+    flex-direction: column; /* Egymás alá kerülnek */
+    gap: 15px;
+    margin-top: 30px; /* Távolság a felső menüpontoktól */
+  }
+
+  /* Mobilon a függőleges elválasztó vonalak ( | ) rejtve lesznek */
+  .footer-legal > span {
+    display: none;
+  }
 }
+}
+
 
 /* =========================================================
    EXTRA KIS KÉPERNYŐK (Pl. iPhone SE) ÉS MOZGÁS KONTROLL

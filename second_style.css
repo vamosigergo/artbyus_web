@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Alap beállítások, megegyeznek a főoldallal */
+body {
+    background-color: #000000;
+    color: #f4f4f2;
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* A szövegdoboz, ami összefogja és olvashatóvá teszi a tartalmat */
+.legal-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px 30px 80px;
+}
+
+/* Címsorok stílusai */
+h1 {
+    font-weight: 400;
+    font-size: 36px;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    color: #a2a2a2; /* Egy kis szürke kiemelés az alcímeknek */
+    text-transform: uppercase;
+}
+
+/* Bekezdések és listák */
+p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+ul {
+    font-size: 15px;
+    color: #cccccc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* Vissza a főoldalra link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 40px;
+    color: #767676;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.back-link::before {
+    content: "←";
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Mobil nézet finomhangolása */
+@media (max-width: 799px) {
+    .legal-container {
+        margin: 30px auto;
+        padding: 15px 20px 50px;
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        margin-top: 40px;
+    }
+}
