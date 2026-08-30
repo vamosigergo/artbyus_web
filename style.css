@@ -238,7 +238,6 @@ body.is-ready .preloader__mark {
   transform: translateY(-50%);
 
   pointer-events: none;
-  text-transform: uppercase;
 
   /* KÜLÖN ÁLLÍTHATÓ POZÍCIÓK */
   --left-position: 2.5vw;
@@ -351,7 +350,6 @@ body.is-ready .preloader__mark {
 .expertise__copy {
   font-size: 18px;
   line-height: 1.32;
-  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -735,7 +733,6 @@ body.is-ready .preloader__mark {
     margin: -4px 0 0 14px;
     font-size: 10px;
     line-height: 1.08;
-    text-transform: uppercase;
   }
 }
 
@@ -1270,7 +1267,6 @@ body.is-ready .preloader__mark {
   font-size: 12px;
   line-height: 1.4;
   font-weight: 400;
-  text-transform: uppercase;
   color: #f4f4f2;
 }
 
