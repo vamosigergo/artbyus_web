@@ -38,8 +38,18 @@ contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   // Saját validáció
+  // Saját validáció okosabb hibaüzenettel
   if (!contactForm.checkValidity()) {
-    formStatus.textContent = "Kérjük, töltse ki az összes mezőt.";
+    const privacyCheckbox = document.getElementById('privacyConsent');
+    
+    // Ha minden ki van töltve, de a checkbox hiányzik:
+    if (!privacyCheckbox.checked) {
+      formStatus.textContent = "Az elküldéshez kérjük, fogadja el az adatkezelési tájékoztatót.";
+    } else {
+      // Ha valamelyik másik mező hiányzik:
+      formStatus.textContent = "Kérjük, töltse ki az összes kötelező mezőt.";
+    }
+    
     contactForm.reportValidity();
     return;
   }
