@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Alap beállítások, megegyeznek a főoldallal */
+
 body {
     background-color: #000000;
     color: #f4f4f2;
@@ -11,14 +11,14 @@ body {
     padding: 0;
 }
 
-/* A szövegdoboz, ami összefogja és olvashatóvá teszi a tartalmat */
+
 .legal-container {
     max-width: 800px;
     margin: 60px auto;
     padding: 20px 30px 80px;
 }
 
-/* Címsorok stílusai */
+
 h1 {
     font-weight: 400;
     font-size: 36px;
@@ -32,11 +32,10 @@ h2 {
     font-size: 20px;
     margin-top: 50px;
     margin-bottom: 15px;
-    color: #a2a2a2; /* Egy kis szürke kiemelés az alcímeknek */
+    color: #a2a2a2; 
     text-transform: uppercase;
 }
 
-/* Bekezdések és listák */
 p {
     font-size: 15px;
     margin-bottom: 20px;
@@ -59,7 +58,7 @@ strong {
     font-weight: 400;
 }
 
-/* Vissza a főoldalra link */
+
 .back-link {
     display: inline-flex;
     align-items: center;
@@ -82,7 +81,7 @@ strong {
     font-size: 18px;
 }
 
-/* Mobil nézet finomhangolása */
+
 @media (max-width: 799px) {
     .legal-container {
         margin: 30px auto;

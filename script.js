@@ -37,16 +37,15 @@ const submitText = submitButton?.querySelector("span");
 contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  // Saját validáció
-  // Saját validáció okosabb hibaüzenettel
+  // Validation
   if (!contactForm.checkValidity()) {
     const privacyCheckbox = document.getElementById('privacyConsent');
     
-    // Ha minden ki van töltve, de a checkbox hiányzik:
+    
     if (!privacyCheckbox.checked) {
       formStatus.textContent = "Az elküldéshez kérjük, fogadja el az adatkezelési tájékoztatót.";
     } else {
-      // Ha valamelyik másik mező hiányzik:
+      
       formStatus.textContent = "Kérjük, töltse ki az összes kötelező mezőt.";
     }
     
@@ -54,7 +53,7 @@ contactForm?.addEventListener("submit", async (event) => {
     return;
   }
 
-  // Küldés állapot
+  // Send status
   if (submitText) {
     submitText.textContent = "KÜLDÉS...";
   }
@@ -83,7 +82,7 @@ contactForm?.addEventListener("submit", async (event) => {
         submitText.textContent = "ELKÜLDVE";
       }
 
-      // 3 másodperc után visszaáll a gomb
+      
       setTimeout(() => {
         if (submitText) {
           submitText.textContent = "KÜLDÉS";

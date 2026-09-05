@@ -42,9 +42,7 @@ textarea {
   font: inherit;
 }
 
-/* =========================================================
-   BETÖLTŐ (PRELOADER) HÁTTÉR ÉS ÁTTŰNÉS
-========================================================= */
+/* preloader */
 
 .preloader {
   position: fixed;
@@ -55,7 +53,6 @@ textarea {
   background: #000000;
   opacity: 1;
   visibility: visible;
-  /* Kicsit hosszabb, 1.2 másodperces sötétedés az extra drámai hatásért */
   transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
 }
 
@@ -65,17 +62,14 @@ body.is-ready .preloader {
   pointer-events: none;
 }
 
-/* =========================================================
-   A LOGÓ (MARK) ANIMÁCIÓI (KIRAJZOLÓDÓ / FELFEDŐ HATÁS)
-========================================================= */
+/* animation */
 
 .preloader__mark {
   width: 270px; 
   min-height: 75px; 
   opacity: 0; 
   
-  /* Ez a CSS Maszk hozza létre a finom, "kirajzolódó" hatást 
-     anélkül, hogy módosítanád a HTML-ben lévő img taget */
+  
   -webkit-mask-image: linear-gradient(60deg, black 40%, rgba(0,0,0,0) 80%);
   mask-image: linear-gradient(60deg, black 40%, rgba(0,0,0,0) 80%);
   -webkit-mask-size: 300% 100%;
@@ -83,40 +77,38 @@ body.is-ready .preloader {
   -webkit-mask-position: 100% 0;
   mask-position: 100% 0;
 
-  /* Az animáció 2.5 másodperc alatt fut le */
+  
   animation: logo-reveal-mask 2.5s ease-in-out forwards; 
   
-  /* Kilépő effektek (méret és elmosódás) */
+  /* transition */
   transition: 
     transform 0.9s cubic-bezier(0.5, 0, 0.2, 1), 
     filter 0.7s ease-in, 
     opacity 0.7s ease-in;
 }
 
-/* KILÉPŐ ANIMÁCIÓ (Látványos eltűnés: robbanásszerű nagyítás és blur) */
+
 body.is-ready .preloader__mark {
   transform: scale(2.2) !important; 
   filter: blur(15px) !important;    
   opacity: 0 !important;
 }
 
-/* =========================================================
-   KULCSKOCKÁK (KEYFRAMES) A PRELOADERHEZ
-========================================================= */
+
 
 @keyframes logo-reveal-mask {
   0% { 
     opacity: 0; 
-    /* A maszk teljesen letakarja a képet */
+    
     -webkit-mask-position: 100% 0;
     mask-position: 100% 0;
     transform: scale(0.95); 
   }
   15% { 
-    opacity: 1; /* A kép láthatóvá válik, de a maszk még takarja */
+    opacity: 1; 
   }
   85% { 
-    /* A maszk lassan végighúzódik a logón, felfedve azt */
+    
     -webkit-mask-position: 0% 0;
     mask-position: 0% 0;
     transform: scale(1); 
@@ -129,9 +121,7 @@ body.is-ready .preloader__mark {
   }
 }
 
-/* =========================================================
-   WEBOLDAL TÖBBI RÉSZE
-========================================================= */
+
 
 .asset {
   overflow: hidden;
@@ -207,25 +197,7 @@ body.is-ready .preloader__mark {
   color: #9e9e9e;
 }
 
-/* =========================================================
-   FŐKÉP SZÖVEGEI (HERO STATEMENT)
-========================================================= */
 
-/* =========================================================
-   FŐKÉP SZÖVEGEI (HERO STATEMENT) - KÖZÉPRE ZÁRT, LÉPCSŐZETES
-========================================================= */
-
-/* =========================================================
-   FŐKÉP SZÖVEGEI (HERO STATEMENT) - OKOS, RESZPONZÍV ELRENDEZÉS
-========================================================= */
-
-/* =========================================================
-   FŐKÉP SZÖVEGEI (HERO STATEMENT) - GOLYÓÁLLÓ ELRENDEZÉS
-========================================================= */
-
-/* =========================================================
-   FŐKÉP SZÖVEGEI (HERO STATEMENT) - KÖZÉPRE IGAZÍTOTT DOBOZ
-========================================================= */
 
 .hero__statement {
   position: absolute;
@@ -239,7 +211,7 @@ body.is-ready .preloader__mark {
 
   pointer-events: none;
 
-  /* KÜLÖN ÁLLÍTHATÓ POZÍCIÓK */
+  
   --left-position: 2.5vw;
   --right-position: 2.5vw;
 }
@@ -255,12 +227,12 @@ body.is-ready .preloader__mark {
   white-space: nowrap;
 }
 
-/* BAL OLDALI TÖMBB */
+
 .hero__statement h1 {
   left: var(--left-position);
 }
 
-/* JOBB OLDALI TÖMBB */
+
 .hero__statement p {
   right: var(--right-position);
 }
@@ -289,7 +261,8 @@ body.is-ready .preloader__mark {
 }
 
 .copy-column {
-  width: min(100% - var(--copy-start) - 13vw, 500px);
+  width: min(100% - var(--copy-start) - 30px, 500px); 
+  max-width: calc(100vw - var(--copy-start) - 20px); 
   margin-left: var(--copy-start);
 }
 
@@ -348,13 +321,14 @@ body.is-ready .preloader__mark {
 }
 
 .expertise__copy {
+  margin-top: 0; 
+  margin-bottom: 0; 
+  padding-right: 20px; 
   font-size: 18px;
   line-height: 1.32;
 }
 
-/* =========================================================
-   PORTFÓLIÓ RÉSZ (KÉPEK ÚJ, MINTA ALAPJÁN KÉSZÜLT RÁCSA)
-========================================================= */
+
 
 .portfolio {
   min-height: 951px;
@@ -378,65 +352,53 @@ body.is-ready .preloader__mark {
   position: absolute;
 }
 
-/* 
-  KÉPEK EGYSÉGESÍTÉSE
-  Ez garantálja, hogy a képek kitöltik a számukra kijelölt helyet
-  torzulás és nyúlás nélkül.
-*/
-/* 
-  KÉPEK EGYSÉGESÍTÉSE ÉS HOVER EFFEKT
-  Ez garantálja, hogy a képek kitöltik a helyet, és interaktívak lesznek.
-*/
+
 .project {
   object-fit: cover;
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out; /* Finom, lágy átmenet az animációhoz */
-  cursor: pointer; /* Az egér mutatóvá változik, jelezve az interakciót */
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out; 
+  cursor: pointer; 
 }
 
-/* HOVER: Amikor ráviszed az egeret a képre */
+
 .project:hover {
-  transform: scale(1.05); /* 5%-os nagyítás, amitől előre jön a kép */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); /* Drámai árnyék, ami mélységet ad */
-  z-index: 10; /* Kiemeli a megcélzott képet a többi fölé */
+  transform: scale(1.05); 
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); 
+  z-index: 10; 
 }
 
-/* --- FELSŐ SOR --- */
 
-/* 1. OSZLOP: Álló portré */
 .project--1 {
-  top: 70px; /* Egy vonalban a MUNKÁINK felirattal */
+  top: 70px; 
   left: 18.5vw;
   width: 15vw;
   aspect-ratio: 4 / 5;
 }
 
-/* 2. OSZLOP: Szélesebb tájkép */
+
 .project--2 {
-  top: 70px; /* Lecsúsztattuk a többivel egy vonalba */
+  top: 70px; 
   left: 35.5vw;
   width: 15vw;
   aspect-ratio: 4 / 3;
 }
 
-/* 3. OSZLOP: Álló portré */
+
 .project--3 {
-  top: 70px; /* Egy vonalban a MUNKÁINK felirattal */
+  top: 70px; 
   left: 52.5vw;
   width: 15vw;
   aspect-ratio: 4 / 5;
 }
 
-/* 4. OSZLOP (jobb szél): Négyzetesebb kép */
+
 .project--4 {
-  top: 70px; /* Lecsúsztattuk a többivel egy vonalba */
+  top: 70px; 
   left: 86.5vw;
   width: 12vw; 
   aspect-ratio: 1 / 1;
 }
 
-/* --- ALSÓ SOR --- */
 
-/* 0. OSZLOP (Bal szél, [MUNKÁINK] felirat alatt) */
 .project--5 {
   top: 520px;
   left: 1.5vw;
@@ -444,7 +406,7 @@ body.is-ready .preloader__mark {
   aspect-ratio: 4 / 5;
 }
 
-/* 1. OSZLOP ALATT (Felirat, pontosan az 1. kép vonalában) */
+
 .portfolio__notice {
   top: 780px; 
   left: 18.5vw;
@@ -454,7 +416,7 @@ body.is-ready .preloader__mark {
   line-height: 1.13;
 }
 
-/* 3. OSZLOP (Hajszálpontosan a 3. kép alatt) */
+
 .project--6 {
   top: 520px;
   left: 52.5vw;
@@ -462,7 +424,7 @@ body.is-ready .preloader__mark {
   aspect-ratio: 4 / 5;
 }
 
-/* 4. OSZLOP (Közvetlenül a 6. kép mellett) */
+
 .project--7 {
   top: 520px;
   left: 69.5vw;
@@ -471,9 +433,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* =========================================================
-   LÁBLÉC ÉS EGYÉB BEÁLLÍTÁSOK
-========================================================= */
+
 
 .site-footer {
   position: relative;
@@ -511,7 +471,7 @@ body.is-ready .preloader__mark {
   right: 19px;
   text-align: right;
 }
-/* Az egész blokkot (linkek + email) középre pozicionáljuk a láblécben */
+
 .footer-legal {
   position: absolute;
   top: 37px;
@@ -520,13 +480,13 @@ body.is-ready .preloader__mark {
   
   display: flex;
   align-items: center;
-  gap: 15px; /* Szép szellős távolság az elemek és a vonalak ( | ) között */
+  gap: 15px; 
   
   white-space: nowrap;
   font-size: 16px;
 }
 
-/* Visszaállítjuk az e-mail linket normál állapotra, hogy ne ugorjon ki a sorból */
+
 .footer-email {
   position: static;
   transform: none;
@@ -541,7 +501,7 @@ body.is-ready .preloader__mark {
 }
 
 .footer-legal a:hover {
-  color: #9e9e9e; /* Az oldal többi linkjéhez passzoló szürkés hover effekt */
+  color: #9e9e9e; 
 }
 
 @media (max-width: 799px) {
@@ -749,42 +709,40 @@ body.is-ready .preloader__mark {
   .contact-form button i { animation: none; transition: none; }
 }
 
-/* =========================================================
-   CONTACT SZEKCIÓ (TISZTÍTOTT, EGYSÉGESÍTETT)
-========================================================= */
+
 
 .contact {
     position: relative;
     min-height: 650px;
-    padding-top: 29px; /* Ugyanaz a térköz, mint a [RÓLUNK szekciónál */
+    padding-top: 29px; 
     padding-bottom: 100px;
 }
 
-/* --- 1. BAL OSZLOP: JELÖLŐ ÉS KÉP --- */
+
 
 .contact__label {
     position: absolute;
   z-index: 1;
-  top: 70px;
-  left: 23px;
+  top: 30px;
+  left: 19px;
 }
 
 .asset--contact {
     position: absolute;
-    top: 200px; /* Szemre beállítva a fő cím alá */
-    left: 19px; /* Egy vonalban a [CONTACT felirattal */
+    top: 200px; 
+    left: 19px; 
     width: 250px;
     height: 250px;
     object-fit: cover;
 }
 
-/* --- 2. JOBB OSZLOP: CÍM, FORM, GOMB --- */
+
 
 .contact__title {
     width: min(100% - var(--copy-start) - 8vw, 650px);
-    margin-left: var(--copy-start); /* EZ teszi egy vonalba a fenti szövegekkel! */
+    margin-left: var(--copy-start); 
     margin-top: 0;
-    margin-bottom: 80px; /* Távolság a formtól */
+    margin-bottom: 80px; 
 
     font-family: "Poppins", sans-serif;
     font-size: 24px;
@@ -795,18 +753,16 @@ body.is-ready .preloader__mark {
 
 .contact-form {
     width: min(100% - var(--copy-start) - 9.5vw, 407px);
-    margin-left: var(--copy-start); /* Szintén a jobb oszlopba kerül */
+    margin-left: var(--copy-start); 
     position: relative;
 }
 
-/* ---------------------------------------------------------
-   INPUTOK ÉS LEBEGŐ FELIRATOK
---------------------------------------------------------- */
+
 .form-inputs {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Távolság a mezők között */
+    gap: 30px; 
 }
 
 .form-group {
@@ -825,7 +781,7 @@ body.is-ready .preloader__mark {
     padding: 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #666666; /* Finomabb vonal */
+    border-bottom: 1px solid #666666; 
     outline: none;
     border-radius: 0;
     color: #ffffff;
@@ -853,7 +809,6 @@ body.is-ready .preloader__mark {
     transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 }
 
-/* Lebegő felirat effektek fókuszáláskor */
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label,
 .form-group textarea:focus + label,
@@ -868,9 +823,7 @@ body.is-ready .preloader__mark {
     border-bottom-color: #ffffff;
 }
 
-/* ---------------------------------------------------------
-   CHECKBOX (ADATVÉDELEM)
---------------------------------------------------------- */
+
 .form-checkbox {
     display: flex;
     align-items: flex-start;
@@ -878,7 +831,7 @@ body.is-ready .preloader__mark {
     margin-top: 10px;
 }
 
-/* Alapértelmezett kinézet elrejtése és egyedi doboz rajzolása */
+
 .form-checkbox input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
@@ -893,13 +846,13 @@ body.is-ready .preloader__mark {
     transition: all 0.3s ease;
 }
 
-/* Bejelölt állapot (Fehér háttér, fekete pipa) */
+
 .form-checkbox input[type="checkbox"]:checked {
     background-color: #ffffff;
     border-color: #ffffff;
 }
 
-/* A pipa ikonja CSS-ből rajzolva */
+
 .form-checkbox input[type="checkbox"]:checked::after {
     content: "✔";
     position: absolute;
@@ -927,15 +880,13 @@ body.is-ready .preloader__mark {
     color: #aaaaaa;
 }
 
-/* ---------------------------------------------------------
-   KÜLDÉS GOMB & FORM STÁTUSZ
---------------------------------------------------------- */
+
 .submit-btn {
     width: min(100% - var(--copy-start) - 9.5vw, 407px);
     margin-left: var(--copy-start);
     margin-top: 40px;
     display: flex;
-    justify-content: flex-end; /* A form jobb széléhez igazítja a gombot (kép alapján) */
+    justify-content: flex-end; 
     align-items: center;
     gap: 15px;
     background: none;
@@ -960,7 +911,7 @@ body.is-ready .preloader__mark {
 }
 
 .submit-btn:hover span {
-    transform: translateX(-5px); /* Enyhén balra csúszik */
+    transform: translateX(-5px); 
     color: #aaaaaa;
 }
 
@@ -978,22 +929,19 @@ body.is-ready .preloader__mark {
     font-size: 12px;
 }
 
-/* =========================================================
-   MOBIL NÉZET (MINDEN 800PX ALATTI KÉPERNYŐRE)
-========================================================= */
+/* mobile view */
 @media (max-width: 799px) {
-  /* Alapok és térközök nullázása mobilon */
+  
   :root {
     --page-pad: 20px;
-    --copy-start: 20px; /* Megszüntetjük a hatalmas bal margót! */
+    --copy-start: 20px; 
   }
 
   body {
     font-size: 14px;
   }
 
-  /* --- HERO (FŐKÉP) ÉS FEJLÉC --- */
-  /* --- HERO (FŐKÉP) ÉS FEJLÉC --- */
+  
   .hero {
     height: 100vh;
     min-height: auto;
@@ -1001,9 +949,9 @@ body.is-ready .preloader__mark {
 
   .site-header {
     padding: 30px 20px 0;
-    flex-direction: row; /* EGYMÁS MELLETT! Ez teszi egy sorba őket */
-    align-items: center; /* Függőlegesen középre igazítja a logót és a menüt */
-    justify-content: space-between; /* A logót balra, a menüt jobbra tolja */
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between; 
     gap: 15px;
   }
 
@@ -1012,41 +960,39 @@ body.is-ready .preloader__mark {
   }
 
   .brand__mark {
-    width: 100px; /* Kicsit kisebbre vettük, hogy maradjon hely a menünek */
+    width: 100px; 
     height: auto;
     margin-left: 0;
   }
 
   .main-nav {
     margin-right: 0;
-    gap: 12px; /* Kicsit szorosabb, hogy kiférjen */
-    font-size: 11px; /* Kisebb betű, hogy egy sorban maradjon mobilon is */
-    width: auto; /* Levettük a 100%-ot, így befér a logó mellé */
+    gap: 12px; 
+    font-size: 11px; 
+    width: auto; 
     justify-content: flex-end;
-    flex-wrap: nowrap; /* Megtiltjuk, hogy új sorba törjön */
+    flex-wrap: nowrap; 
   }
 
   @media (max-width: 799px) {
   
-  /* ... (a korábbi kódok, pl. header beállítások maradnak) ... */
-
-  /* 1. LÉPÉS: ITT ÁLLÍTOD BE A KÉP MAGASSÁGÁT */
+  
   .hero {
-    height: 70vh; /* Ezt az értéket csökkentsd (pl. 60vh vagy akár fix 500px), amíg olyan nem lesz, ahogy szeretnéd! */
+    height: 70vh; 
     min-height: auto;
   }
 
-  /* 2. LÉPÉS: A SZÖVEGET ALULRÓL POZÍCIONÁLJUK */
+  
   .hero__statement {
     position: absolute;
     z-index: 10;
     
-    /* A top és transform értékeket felülírjuk: */
+    
     top: auto; 
     transform: none; 
     
-    /* Helyette a doboz aljához rögzítjük: */
-    bottom: 10%; /* Mindig a hero szekció aljától számított 10%-ra lesz. Ha lejjebb akarod, írj 5%-ot, ha feljebb, 15%-ot. */
+    
+    bottom: 10%; 
     
     left: 5vw;
     width: 90vw;
@@ -1057,7 +1003,7 @@ body.is-ready .preloader__mark {
     margin: 0;
   }
 
-  /* A belső elemek maradnak az előző javítás szerint: */
+  
   .hero__statement h1,
   .hero__statement p {
     position: static;
@@ -1072,14 +1018,14 @@ body.is-ready .preloader__mark {
   }
 }
   
-  /* --- ÁLTALÁNOS SZEKCIÓ BEÁLLÍTÁSOK --- */
+  
   .section-label,
   .about .section-label {
-    position: relative !important; /* Levesszük a lebegést (absolute) */
+    position: relative !important; 
     top: auto !important;
     left: auto !important;
     margin-left: 0;
-    margin-bottom: 25px; /* Szép szellős térköz a cím és a szöveg közé */
+    margin-bottom: 25px; 
   }
 
   .copy-column {
@@ -1087,7 +1033,7 @@ body.is-ready .preloader__mark {
     margin-left: 0;
   }
 
-  /* --- RÓLUNK SZEKCIÓ --- */
+  
   .about {
     min-height: auto;
     padding: 60px 20px;
@@ -1101,10 +1047,10 @@ body.is-ready .preloader__mark {
     margin-top: 20px;
   }
   .location--about {
-    display: none; /* Mobilon elrejtjük a zavaró jobb felső helyszínt */
+    display: none; 
   }
 
-  /* --- SZAKÉRTELEM SZEKCIÓ --- */
+  
   .expertise {
     min-height: auto;
     padding: 20px 20px 60px;
@@ -1121,9 +1067,7 @@ body.is-ready .preloader__mark {
     font-size: 14px;
     line-height: 1.4;
   }
-  /* =========================================================
-   MUNKÁINK – MOBIL LAPOZÓS GALÉRIA
-========================================================= */
+  
 
 .portfolio {
   position: relative !important;
@@ -1144,9 +1088,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* =========================================================
-   VÍZSZINTES GALÉRIA
-========================================================= */
+
 
 .portfolio__grid {
   position: relative !important;
@@ -1165,15 +1107,15 @@ body.is-ready .preloader__mark {
   padding: 0 20px 15px 20px !important;
   margin: 0 20px 25px 20px !important;
 
-  /* Csak vízszintes görgetés */
+  
   touch-action: pan-x;
 
-  /* Lapozás */
+  
   scroll-snap-type: x mandatory;
 
   -webkit-overflow-scrolling: touch;
 
-  /* Scrollbar elrejtése */
+ 
   scrollbar-width: none;
 }
 
@@ -1182,9 +1124,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* =========================================================
-   GALÉRIA KÉPEI
-========================================================= */
+
 
 .project {
   position: relative !important;
@@ -1208,7 +1148,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* Minden projekt látható mobilon */
+
 
 .project--1,
 .project--2,
@@ -1221,13 +1161,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* =========================================================
-   LEÍRÁS – A GALÉRIA ALATT
-========================================================= */
 
-/* =========================================================
-   MUNKÁINK LEÍRÁSA – GALÉRIA ALATT
-========================================================= */
 
 .portfolio {
   position: relative !important;
@@ -1238,23 +1172,19 @@ body.is-ready .preloader__mark {
   position: relative !important;
 }
 
-/* =========================================================
-   MUNKÁINK – LEÍRÁS A GALÉRIA ALATT
-========================================================= */
+
 
 .portfolio {
   position: relative !important;
   padding-bottom: 110px !important;
 }
 
-/* Az eredeti szöveget elrejtjük,
-   mert az a slider belsejében van */
+
 .portfolio__notice {
   display: none !important;
 }
 
-/* A szöveg már a PORTFOLIO szekció részeként jelenik meg,
-   ezért nem mozog a galériával */
+
 .portfolio::after {
   content: "MEGBÍZÓINK OTTHONÁNAK VÉDELMÉBEN A VÉGLEGES MUNKÁT NEM ÁLL MÓDUNKBAN FELTÜNTETNI A WEBOLDALON";
 
@@ -1273,7 +1203,7 @@ body.is-ready .preloader__mark {
 
 
   
-  /* --- CONTACT SZEKCIÓ --- */
+  
   .contact {
     min-height: auto;
     padding: 60px 20px;
@@ -1306,7 +1236,7 @@ body.is-ready .preloader__mark {
     justify-content: flex-start;
   }
 
-  /* --- LÁBLÉC --- */
+  
   .site-footer {
     min-height: auto;
     padding: 40px 20px;
@@ -1326,7 +1256,7 @@ body.is-ready .preloader__mark {
   }
   .footer-email,
   .location--footer {
-    position: static; /* Középre rendezve mindent */
+    position: static; 
     transform: none;
     text-align: center;
     margin: 0;
@@ -1334,17 +1264,17 @@ body.is-ready .preloader__mark {
 
   @media (max-width: 799px) {
   
-  /* ... (a korábbi mobil szabályaid maradnak) ... */
+  
 
   .footer-legal {
     position: static;
     transform: none;
-    flex-direction: column; /* Egymás alá kerülnek */
+    flex-direction: column; 
     gap: 15px;
-    margin-top: 30px; /* Távolság a felső menüpontoktól */
+    margin-top: 30px; 
   }
 
-  /* Mobilon a függőleges elválasztó vonalak ( | ) rejtve lesznek */
+  
   .footer-legal > span {
     display: none;
   }
@@ -1352,9 +1282,7 @@ body.is-ready .preloader__mark {
 }
 
 
-/* =========================================================
-   EXTRA KIS KÉPERNYŐK (Pl. iPhone SE) ÉS MOZGÁS KONTROLL
-========================================================= */
+
 @media (max-width: 360px) {
   .hero__statement h1,
   .hero__statement p { 
