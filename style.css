@@ -654,6 +654,7 @@ body.is-ready .preloader__mark {
     height: 214px;
     margin: 47px 0 0 6px;
   }
+  
 
   .project--4 {
     display: none;
@@ -684,6 +685,8 @@ body.is-ready .preloader__mark {
     justify-self: start;
     margin-left: 13px;
   }
+
+ 
 
   .portfolio__notice {
     grid-column: 1 / 3;
