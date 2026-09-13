@@ -390,6 +390,20 @@ body.is-ready .preloader__mark {
   aspect-ratio: 4 / 5;
 }
 
+.project--new {
+  position: absolute;
+  top: 70.5px;
+  left: 69vw;
+
+  
+  width: 15.99vw;
+  aspect-ratio: 241.71 / 282.5;
+  
+  object-fit: cover; 
+  
+  
+  object-position: top;
+}
 
 .project--4 {
   top: 70px; 
